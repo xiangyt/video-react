@@ -1,7 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-import 'antd/dist/reset.css';
-import { Button } from 'antd';
+import logo from "./logo.svg";
+import "./App.css";
+import "antd/dist/reset.css";
+import { Button } from "antd";
+import { get } from "./model/axios";
+import React, { Component } from "react";
+
+class MyButton extends Component {
+  handleClick() {
+    get("ping").then(function (res) {
+      console.log(res);
+    });
+  }
+
+  state = {};
+  render() {
+    return (
+      <Button type="primary" onClick={this.handleClick}>
+        Primary
+      </Button>
+    );
+  }
+}
 
 function App() {
   return (
@@ -19,7 +38,7 @@ function App() {
         >
           Learn React
         </a>
-        <Button type="primary">Primary</Button>
+        <MyButton></MyButton>
       </header>
     </div>
   );
